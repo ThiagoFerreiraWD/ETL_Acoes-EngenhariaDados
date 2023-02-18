@@ -4,14 +4,14 @@ Este documento demonstra o desenvolvimento técnico do projeto de ETL de dados f
 
 ## API - Alphavantage.co
 
- * Google (Alphabet)
- https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=GOGL&apikey={chave_api}&datatype=csv
+ * Google
+ https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=GOGL&apikey={key}&datatype=csv
 
  * Amazon
- https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=AMZN&apikey={chave_api}&datatype=csv 
+ https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=AMZN&apikey={key}&datatype=csv 
  
  * Microsoft
- https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=MSFT&apikey={chave_api}&datatype=csv
+ https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=MSFT&apikey={key}&datatype=csv
 
 *Lembrando que é necessário a criação da chave na [plataforma](https://www.alphavantage.co) e a substituição nos links acima, conforme descrito na [documentação](https://www.alphavantage.co/documentation/) da API.*
 
@@ -49,12 +49,36 @@ Este documento demonstra o desenvolvimento técnico do projeto de ETL de dados f
 
 ## Processo de Desenvolvimento
 
+1. Criação das tabelas no banco de dados (Azure SQL), conforme arquivo "tables_create.sql";
+
+2. Criação da stored procedure, para efetuar o cast e o union das tabelas stage, conforme arquivo "sp_cast_union_data.sql";
+
+3. Criação do pipeline de dados no Data Factory, conforme arquivo "pipelineDF.json", resultando na imagem abaixo:
+
 ![image](https://user-images.githubusercontent.com/54869201/219870726-d14e3247-452d-40f0-89f1-2e4bf9a18a36.png)
 
+4. Execução do pipeline. De acordo com a imagem abaixo podemos observar que o pipeline executou sem erros.
 
+![image](https://user-images.githubusercontent.com/54869201/219870912-0e405749-dc8a-4d86-a2c7-520dcaed42e0.png)
 
-## Ferramentas Utilizadas
+5. Demonstração da tabela STAGE Microsoft:
 
+![image](https://user-images.githubusercontent.com/54869201/219871043-d383e3a6-6bc3-400d-a55f-89d33766f041.png)
+
+6. Demonstração da tabela FINAL com os dados consolidados:
+
+![image](https://user-images.githubusercontent.com/54869201/219871100-7fd9cdaf-f9ef-48af-9b0a-b2b20285d2c0.png)
+
+7. Após conexão do Power BI com o banco de dados Azure SQL, abaixo a imagem do dashboard com o resumo das informações:
+
+![image](https://user-images.githubusercontent.com/54869201/219871420-633ffce9-3180-4d1e-9c33-60e55d363713.png)
+
+## Ferramentas Utilizadas:
+
+* [Data Factory](https://azure.microsoft.com/pt-br/products/data-factory/): Ferramenta de ETL Microsoft Azure.
+* [Azure SQL](https://azure.microsoft.com/pt-br/products/azure-sql/database): Banco de dados SQL do Azure.
+* [Power Bi](https://powerbi.microsoft.com/pt-br/): Ferramenta de Visualização de Dados.
+* [API](https://www.alphavantage.com/): API para extração das informações financeiras.
 
 ## Contatos:
 <div>   
