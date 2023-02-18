@@ -49,11 +49,11 @@ Este documento demonstra o desenvolvimento técnico do projeto de ETL de dados f
 
 ## Processo de Desenvolvimento
 
-1. Criação das tabelas no banco de dados (Azure SQL), conforme arquivo "tables_create.sql";
+1. Criação das tabelas no banco de dados (Azure SQL), conforme arquivo [tables_create.sql](https://github.com/ThiagoFerreiraWD/ETL_Acoes-EngenhariaDados/blob/main/tables_create.sql);
 
-2. Criação da stored procedure, para efetuar o cast e o union das tabelas stage, conforme arquivo "sp_cast_union_data.sql";
+2. Criação da stored procedure, para efetuar o cast e o union das tabelas stage, conforme arquivo [sp_cast_union_data.sql](https://github.com/ThiagoFerreiraWD/ETL_Acoes-EngenhariaDados/blob/main/sp_cast_union_data.sql);
 
-3. Criação do pipeline de dados no Data Factory, conforme arquivo "pipelineDF.json", resultando na imagem abaixo:
+3. Criação do pipeline de dados no Data Factory, conforme arquivo [pipelineDF.json](https://github.com/ThiagoFerreiraWD/ETL_Acoes-EngenhariaDados/blob/main/pipelineDF.json), resultando na imagem abaixo:
 
 ![image](https://user-images.githubusercontent.com/54869201/219870726-d14e3247-452d-40f0-89f1-2e4bf9a18a36.png)
 
